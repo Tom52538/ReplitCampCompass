@@ -182,8 +182,8 @@ export default function Navigation() {
         setCurrentBearing(routeBearing);
       } else {
         // Default driving direction simulation for testing
-        setCurrentBearing(90); // Changed from 45 to 90 degrees as requested
-        console.log('📍 Using default test bearing: 90 degrees');
+        setCurrentBearing(45); // Northeast direction for testing
+        console.log('📍 Using default test bearing: 45 degrees');
       }
       // Store current position for next calculation
       if (livePosition) {
@@ -741,14 +741,6 @@ export default function Navigation() {
               });
               setCurrentRoute(route);
 
-              // Initial voice announcement when navigation starts
-              if (voiceEnabled && secureTTSRef.current && route?.instructions?.length > 0) {
-                const firstInstruction = route.instructions[0];
-                const initialText = `Navigation gestartet. ${firstInstruction.instruction || 'Geradeaus weiterfahren'}`;
-                console.log('🎤 Initial navigation announcement:', initialText);
-                secureTTSRef.current.speak(initialText, 'start');
-              }
-
               setIsNavigating(true);
               setUIMode('navigation');
               setOverlayStates(prev => ({ ...prev, navigation: true, routePlanning: false }));
@@ -865,15 +857,10 @@ export default function Navigation() {
       setCurrentRoute(route);
       setDestinationMarker(destination); // Store destination for travel mode changes
 
-      // Initial voice announcement when navigation starts
-      if (voiceEnabled && secureTTSRef.current && route?.instructions?.length > 0) {
-        const firstInstruction = route.instructions[0];
-        const initialText = `Navigation gestartet. ${firstInstruction.instruction || 'Geradeaus weiterfahren'}`;
-        console.log('🎤 Initial POI navigation announcement:', initialText);
-        secureTTSRef.current.speak(initialText, 'start');
-      }
-
       setIsNavigating(true);
+
+      // Auto-switch to driving orientation during navigation
+      setMapOrientation('driving');
 
       mobileLogger.logPerformance('Navigation setup', startTime);
       mobileLogger.log('NAVIGATION', `Navigation started successfully to ${normalizePoiString(poi.name)}`);

@@ -133,8 +133,7 @@ export class SpeedTracker {
     }
 
     // Calculate time remaining in seconds
-    const distanceKm = remainingDistance / 1000; // Convert meters to km
-    const timeHours = distanceKm / estimatedSpeed;
+    const timeHours = remainingDistance / estimatedSpeed;
     const timeSeconds = timeHours * 3600;
     
     // Create estimated arrival time
