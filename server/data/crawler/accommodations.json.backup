@@ -1,0 +1,483 @@
+{
+  "beach-house-6a": {
+    "accommodation_id": "beach-house-6a",
+    "name": {
+      "en": "Beach House 6A",
+      "de": "Strandhaus 6A",
+      "fr": "Maison de plage 6A",
+      "nl": "Strandhuis 6A",
+      "it": "Casa sulla spiaggia 6A",
+      "es": "Casa de playa 6A"
+    },
+    "park_id": "roompot-beach-resort",
+    "url": "https://www.roompot.de/parks/roompot-beach-resort/unterkuenfte/beach-house-6a",
+    "type": "beach_house",
+    "capacity": {
+      "max_persons": 6
+    },
+    "description": {
+      "en": "Modern beach house with premium amenities, ideal for families seeking a comfortable coastal retreat.",
+      "de": "Modernes Strandhaus mit Premium-Ausstattung, ideal für Familien, die einen komfortablen Küstenurlaub suchen.",
+      "fr": "Maison de plage moderne avec des équipements haut de gamme, idéale pour les familles recherchant une retraite côtière confortable.",
+      "nl": "Modern strandhuis met premium voorzieningen, ideaal voor gezinnen die op zoek zijn naar een comfortabel kustverblijf.",
+      "it": "Casa sulla spiaggia moderna con servizi premium, ideale per famiglie in cerca di un rifugio costiero confortevole.",
+      "es": "Casa de playa moderna con comodidades premium, ideal para familias que buscan un retiro costero cómodo."
+    },
+    "features": {
+      "en": [
+        "WiFi",
+        "Premium Terrace",
+        "Dishwasher",
+        "Smart TV",
+        "Private Parking",
+        "Garden",
+        "Sea View"
+      ],
+      "de": [
+        "WLAN",
+        "Premium-Terrasse",
+        "Spülmaschine",
+        "Smart TV",
+        "Privater Parkplatz",
+        "Garten",
+        "Meerblick"
+      ],
+      "fr": [
+        "WiFi",
+        "Terrasse Premium",
+        "Lave-vaisselle",
+        "Smart TV",
+        "Parking Privé",
+        "Jardin",
+        "Vue Mer"
+      ],
+      "nl": [
+        "WiFi",
+        "Premium Terras",
+        "Vaatwasser",
+        "Smart TV",
+        "Privé Parkeren",
+        "Tuin",
+        "Zeezicht"
+      ],
+      "it": [
+        "WiFi",
+        "Terrazza Premium",
+        "Lavastoviglie",
+        "Smart TV",
+        "Parcheggio Privato",
+        "Giardino",
+        "Vista Mare"
+      ],
+      "es": [
+        "WiFi",
+        "Terraza Premium",
+        "Lavavajillas",
+        "Smart TV",
+        "Aparcamiento Privado",
+        "Jardín",
+        "Vista al Mar"
+      ]
+    },
+    "price_info": {
+      "en": "from €139 per night",
+      "de": "ab €139 pro Nacht",
+      "fr": "à partir de 139 € par nuit",
+      "nl": "vanaf €139 per nacht",
+      "it": "da €139 a notte",
+      "es": "desde €139 por noche"
+    },
+    "images": {
+      "primary": {
+        "image_id": "bha_001",
+        "original_url": "https://example.com/beach_house_6a_001.jpg",
+        "local_path": "server/data/crawler/images/beach_house_6a/exterior_001.jpg",
+        "category": "exterior",
+        "dimensions": {
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "gallery": [
+        {
+          "image_id": "bha_002",
+          "original_url": "https://example.com/beach_house_6a_002.jpg",
+          "local_path": "server/data/crawler/images/beach_house_6a/interior_001.jpg",
+          "category": "interior",
+          "dimensions": {
+            "width": 1920,
+            "height": 1080
+          }
+        }
+      ]
+    },
+    "crawled_at": "2025-08-15T12:23:04",
+    "poi_mappings": [
+      "roompot_332",
+      "roompot_525",
+      "beach_house_6a_001",
+      "beach_house_6a_002"
+    ]
+  },
+  "beach-house-6b": {
+    "accommodation_id": "beach-house-6b",
+    "name": {
+      "en": "Beach House 6B",
+      "de": "Strandhaus 6B",
+      "fr": "Maison de plage 6B",
+      "nl": "Strandhuis 6B",
+      "it": "Casa sulla spiaggia 6B",
+      "es": "Casa de playa 6B"
+    },
+    "park_id": "roompot-beach-resort",
+    "url": "https://www.roompot.de/parks/roompot-beach-resort/unterkuenfte/beach-house-6b",
+    "type": "beach_house",
+    "capacity": {
+      "max_persons": 6
+    },
+    "description": {
+      "en": "Comfortable beach house with modern amenities, perfect for families seeking a relaxing coastal getaway.",
+      "de": "Komfortables Strandhaus mit modernen Annehmlichkeiten, perfekt für Familien, die einen entspannten Küstenurlaub suchen.",
+      "fr": "Maison de plage confortable avec des équipements modernes, parfaite pour les familles recherchant une escapade côtière relaxante.",
+      "nl": "Comfortabel strandhuis met moderne voorzieningen, perfect voor gezinnen die op zoek zijn naar een ontspannen kustuitje.",
+      "it": "Confortevole casa sulla spiaggia con servizi moderni, perfetta per famiglie in cerca di una rilassante fuga costiera.",
+      "es": "Cómoda casa de playa con comodidades modernas, perfecta para familias que buscan una escapada costera relajante."
+    },
+    "features": {
+      "en": [
+        "WiFi",
+        "Terrace",
+        "Dishwasher",
+        "TV",
+        "Parking",
+        "Garden"
+      ],
+      "de": [
+        "WLAN",
+        "Terrasse",
+        "Spülmaschine",
+        "TV",
+        "Parkplatz",
+        "Garten"
+      ],
+      "fr": [
+        "WiFi",
+        "Terrasse",
+        "Lave-vaisselle",
+        "TV",
+        "Parking",
+        "Jardin"
+      ],
+      "nl": [
+        "WiFi",
+        "Terras",
+        "Vaatwasser",
+        "TV",
+        "Parkeren",
+        "Tuin"
+      ],
+      "it": [
+        "WiFi",
+        "Terrazza",
+        "Lavastoviglie",
+        "TV",
+        "Parcheggio",
+        "Giardino"
+      ],
+      "es": [
+        "WiFi",
+        "Terraza",
+        "Lavavajillas",
+        "TV",
+        "Aparcamiento",
+        "Jardín"
+      ]
+    },
+    "price_info": {
+      "en": "from €119 per night",
+      "de": "ab €119 pro Nacht",
+      "fr": "à partir de 119 € par nuit",
+      "nl": "vanaf €119 per nacht",
+      "it": "da €119 a notte",
+      "es": "desde €119 por noche"
+    },
+    "images": {
+      "primary": {
+        "image_id": "bhb_001",
+        "original_url": "https://example.com/beach_house_6b_001.jpg",
+        "local_path": "server/data/crawler/images/beach_house_6b/exterior_001.jpg",
+        "category": "exterior",
+        "dimensions": {
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "gallery": [
+        {
+          "image_id": "bhb_002",
+          "original_url": "https://example.com/beach_house_6b_002.jpg",
+          "local_path": "server/data/crawler/images/beach_house_6b/interior_001.jpg",
+          "category": "interior",
+          "dimensions": {
+            "width": 1920,
+            "height": 1080
+          }
+        }
+      ]
+    },
+    "crawled_at": "2025-08-15T12:23:04",
+    "poi_mappings": [
+      "roompot_4",
+      "roompot_5",
+      "beach_house_6b_001",
+      "beach_house_6b_002"
+    ]
+  },
+  "lodge-4": {
+    "accommodation_id": "lodge-4",
+    "name": {
+      "en": "Lodge 4",
+      "de": "Lodge 4",
+      "fr": "Lodge 4",
+      "nl": "Lodge 4",
+      "it": "Lodge 4",
+      "es": "Lodge 4"
+    },
+    "park_id": "water-village",
+    "url": "https://www.roompot.de/parks/water-village/unterkuenfte/lodge-4",
+    "type": "lodge",
+    "capacity": {
+      "max_persons": 4
+    },
+    "description": {
+      "en": "Comfortable lodge accommodation in Water Village, perfect for families seeking a unique water-based camping experience.",
+      "de": "Komfortable Lodge-Unterkunft im Water Village, perfekt für Familien, die ein einzigartiges wasserbasiertes Camping-Erlebnis suchen.",
+      "fr": "Hébergement lodge confortable dans le Water Village, parfait pour les familles recherchant une expérience de camping unique basée sur l'eau.",
+      "nl": "Comfortabele lodge accommodatie in Water Village, perfect voor gezinnen die op zoek zijn naar een unieke water-gebaseerde camping ervaring.",
+      "it": "Alloggio lodge confortevole nel Water Village, perfetto per famiglie in cerca di un'esperienza di campeggio unica basata sull'acqua.",
+      "es": "Alojamiento lodge cómodo en Water Village, perfecto para familias que buscan una experiencia de camping única basada en el agua."
+    },
+    "features": {
+      "en": [
+        "WiFi",
+        "Water View",
+        "Modern Kitchen",
+        "TV",
+        "Parking",
+        "Waterfront Access"
+      ],
+      "de": [
+        "WLAN",
+        "Wasserblick",
+        "Moderne Küche",
+        "TV",
+        "Parkplatz",
+        "Wasserzugang"
+      ],
+      "fr": [
+        "WiFi",
+        "Vue sur l'eau",
+        "Cuisine Moderne",
+        "TV",
+        "Parking",
+        "Accès au bord de l'eau"
+      ],
+      "nl": [
+        "WiFi",
+        "Waterzicht",
+        "Moderne Keuken",
+        "TV",
+        "Parkeren",
+        "Toegang tot waterfront"
+      ],
+      "it": [
+        "WiFi",
+        "Vista acqua",
+        "Cucina Moderna",
+        "TV",
+        "Parcheggio",
+        "Accesso lungomare"
+      ],
+      "es": [
+        "WiFi",
+        "Vista al agua",
+        "Cocina Moderna",
+        "TV",
+        "Aparcamiento",
+        "Acceso al agua"
+      ]
+    },
+    "price_info": {
+      "en": "from €149 per night",
+      "de": "ab €149 pro Nacht",
+      "fr": "à partir de 149 € par nuit",
+      "nl": "vanaf €149 per nacht",
+      "it": "da €149 a notte",
+      "es": "desde €149 por noche"
+    },
+    "images": {
+      "primary": {
+        "image_id": "lodge4_001",
+        "original_url": "https://example.com/lodge_4_001.jpg",
+        "local_path": "server/data/crawler/images/lodge_4/exterior_001.jpg",
+        "category": "exterior",
+        "dimensions": {
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "gallery": [
+        {
+          "image_id": "lodge4_002",
+          "original_url": "https://example.com/lodge_4_002.jpg",
+          "local_path": "server/data/crawler/images/lodge_4/interior_001.jpg",
+          "category": "interior",
+          "dimensions": {
+            "width": 1920,
+            "height": 1080
+          }
+        },
+        {
+          "image_id": "lodge4_003",
+          "original_url": "https://example.com/lodge_4_003.jpg",
+          "local_path": "server/data/crawler/images/lodge_4/groundplan.jpg",
+          "category": "floorplan",
+          "dimensions": {
+            "width": 1920,
+            "height": 1080
+          }
+        }
+      ]
+    },
+    "crawled_at": "2025-09-01T14:39:46",
+    "poi_mappings": [
+      "water_village_lodge_4",
+      "lodge_4_001",
+      "lodge_4_002",
+      "roompot_436"
+    ]
+  },
+  "beach-house-4": {
+    "accommodation_id": "beach-house-4",
+    "name": {
+      "en": "Beach House 4",
+      "de": "Strandhaus 4",
+      "fr": "Maison de plage 4",
+      "nl": "Strandhuis 4",
+      "it": "Casa sulla spiaggia 4",
+      "es": "Casa de playa 4"
+    },
+    "park_id": "roompot-beach-resort",
+    "url": "https://www.roompot.de/parks/roompot-beach-resort/unterkuenfte/beach-house-4",
+    "type": "beach_house",
+    "capacity": {
+      "max_persons": 4
+    },
+    "description": {
+      "en": "Cozy beach house perfect for smaller families, featuring modern amenities and direct beach access.",
+      "de": "Gemütliches Strandhaus perfekt für kleinere Familien, mit modernen Annehmlichkeiten und direktem Strandzugang.",
+      "fr": "Maison de plage confortable parfaite pour les petites familles, dotée d'équipements modernes et d'un accès direct à la plage.",
+      "nl": "Gezellig strandhuis perfect voor kleinere gezinnen, met moderne voorzieningen en directe toegang tot het strand.",
+      "it": "Casa sulla spiaggia accogliente perfetta per famiglie più piccole, con servizi moderni e accesso diretto alla spiaggia.",
+      "es": "Acogedora casa de playa perfecta para familias más pequeñas, con comodidades modernas y acceso directo a la playa."
+    },
+    "features": {
+      "en": [
+        "WiFi",
+        "Beach Terrace",
+        "Dishwasher",
+        "TV",
+        "Parking",
+        "Direct Beach Access"
+      ],
+      "de": [
+        "WLAN",
+        "Strand-Terrasse",
+        "Spülmaschine",
+        "TV",
+        "Parkplatz",
+        "Direkter Strandzugang"
+      ],
+      "fr": [
+        "WiFi",
+        "Terrasse de Plage",
+        "Lave-vaisselle",
+        "TV",
+        "Parking",
+        "Accès Direct Plage"
+      ],
+      "nl": [
+        "WiFi",
+        "Strand Terras",
+        "Vaatwasser",
+        "TV",
+        "Parkeren",
+        "Directe Strandtoegang"
+      ],
+      "it": [
+        "WiFi",
+        "Terrazza Spiaggia",
+        "Lavastoviglie",
+        "TV",
+        "Parcheggio",
+        "Accesso Diretto Spiaggia"
+      ],
+      "es": [
+        "WiFi",
+        "Terraza de Playa",
+        "Lavavajillas",
+        "TV",
+        "Aparcamiento",
+        "Acceso Directo Playa"
+      ]
+    },
+    "price_info": {
+      "en": "from €99 per night",
+      "de": "ab €99 pro Nacht",
+      "fr": "à partir de 99 € par nuit",
+      "nl": "vanaf €99 per nacht",
+      "it": "da €99 a notte",
+      "es": "desde €99 por noche"
+    },
+    "images": {
+      "primary": {
+        "image_id": "bh4_001",
+        "original_url": "https://example.com/beach_house_4_001.jpg",
+        "local_path": "server/data/crawler/images/beach_house_4/exterior_001.jpg",
+        "category": "exterior",
+        "dimensions": {
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "gallery": [
+        {
+          "image_id": "bh4_002",
+          "original_url": "https://example.com/beach_house_4_002.jpg",
+          "local_path": "server/data/crawler/images/beach_house_4/interior_001.jpg",
+          "category": "interior",
+          "dimensions": {
+            "width": 1920,
+            "height": 1080
+          }
+        },
+        {
+          "image_id": "bh4_003",
+          "original_url": "https://example.com/beach_house_4_003.jpg",
+          "local_path": "server/data/crawler/images/beach_house_4/groundplan.jpg",
+          "category": "floorplan",
+          "dimensions": {
+            "width": 1920,
+            "height": 1080
+          }
+        }
+      ]
+    },
+    "crawled_at": "2025-08-15T12:23:04",
+    "poi_mappings": [
+      "roompot_531",
+      "beach_house_4_001",
+      "beach_house_4_002"
+    ]
+  },
+ 

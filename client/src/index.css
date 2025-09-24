@@ -1,0 +1,562 @@
+/* Toast positioning and visibility improvements */
+[data-sonner-toaster] {
+  z-index: 9999 !important;
+}
+
+[data-sonner-toast] {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+}
+
+[data-sonner-toast][data-type="success"] {
+  border-left: 4px solid #22c55e !important;
+}
+
+[data-sonner-toast][data-type="error"] {
+  border-left: 4px solid #ef4444 !important;
+}
+
+/* Destination marker improvements */
+.custom-destination-marker {
+  z-index: 1000 !important;
+}
+
+.custom-destination-marker div {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(60px) saturate(300%) brightness(1.2) !important;
+    -webkit-backdrop-filter: blur(60px) saturate(300%) brightness(1.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.03) !important;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+    border-radius: 20px !important;
+  }
+
+  /* Glass morphism utilities */
+  .glass-button {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 50% !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .glass-button:hover {
+    background: rgba(255, 255, 255, 0.03) !important;
+    transform: scale(1.05) !important;
+  }
+
+  .glass-compact {
+    background: rgba(255, 255, 255, 0.01) !important;
+    backdrop-filter: blur(80px) saturate(400%) !important;
+    -webkit-backdrop-filter: blur(80px) saturate(400%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.02) !important;
+    border-radius: 16px !important;
+  }
+}
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(158, 64%, 52%);
+  --secondary-foreground: hsl(210, 40%, 98%);
+  --accent: hsl(0, 84%, 60%);
+  --accent-foreground: hsl(210, 40%, 98%);
+  --success: hsl(142, 76%, 36%);
+  --warning: hsl(35, 91%, 62%);
+  --error: hsl(0, 84%, 60%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(158, 64%, 52%);
+  --secondary-foreground: hsl(210, 40%, 98%);
+  --accent: hsl(0, 84%, 60%);
+  --accent-foreground: hsl(210, 40%, 98%);
+  --success: hsl(142, 76%, 36%);
+  --warning: hsl(35, 91%, 62%);
+  --error: hsl(0, 84%, 60%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .map-container {
+    @apply w-full h-full relative overflow-hidden;
+  }
+
+  .poi-marker {
+    @apply w-8 h-8 rounded-full flex items-center justify-center shadow-lg text-white text-sm cursor-pointer transition-transform hover:scale-110;
+  }
+
+  .poi-marker.pulse {
+    @apply animate-pulse;
+  }
+
+  .navigation-panel {
+    @apply absolute bottom-0 left-0 right-0 rounded-t-3xl shadow-2xl border-t border-white/30 transition-transform duration-300;
+    background-color: rgba(255, 255, 255, 0.85) !important;
+  }
+
+  .navigation-panel.hidden {
+    @apply translate-y-full;
+  }
+
+  .floating-button {
+    @apply rounded-xl shadow-lg border border-white/30 flex items-center justify-center transition-colors;
+    background-color: rgba(255, 255, 255, 0.75) !important;
+  }
+
+  .floating-button:hover {
+    background-color: rgba(255, 255, 255, 0.85) !important;
+  }
+
+  .floating-button.primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+  }
+
+  .search-input {
+    @apply flex-1 text-base font-medium text-gray-700 placeholder-gray-400 bg-transparent border-none outline-none;
+  }
+
+  .weather-widget {
+    @apply rounded-xl shadow-lg border border-white/30 p-4 min-w-[120px];
+    background-color: rgba(255, 255, 255, 0.8) !important;
+  }
+
+  .status-dot {
+    @apply w-3 h-3 rounded-full;
+  }
+
+  .status-dot.success {
+    @apply bg-green-500;
+  }
+
+  .status-dot.warning {
+    @apply bg-yellow-500;
+  }
+
+  .status-dot.error {
+    @apply bg-red-500;
+  }
+
+  /* POI Marker Styling */
+  .poi-marker-container {
+    @apply pointer-events-auto;
+  }
+
+  .poi-marker-wrapper {
+    @apply cursor-pointer transform transition-transform duration-200 hover:scale-110;
+  }
+
+  .poi-marker-wrapper:hover {
+    @apply scale-110;
+  }
+
+  .category-button {
+    @apply w-12 h-12 floating-button;
+  }
+
+  /* Glassmorphism Route Styling */
+  .glassmorphism-route-main {
+    filter: blur(0.5px) drop-shadow(0 0 8px rgba(59, 130, 246, 0.3)) !important;
+  }
+
+  .glassmorphism-route-pulse {
+    animation: glassmorphismPulse 3s ease-in-out infinite !important;
+  }
+
+  @keyframes glassmorphismPulse {
+    0% {
+      opacity: 0.6;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      opacity: 1.0;
+      stroke-dashoffset: -15;
+    }
+    100% {
+      opacity: 0.8;
+      stroke-dashoffset: -30;
+    }
+  }
+
+  /* Glassmorphism Location Marker */
+  .glassmorphism-location-marker {
+    backdrop-filter: blur(8px) !important;
+  }
+
+  /* Glassmorphism Start/End Markers */
+  .glassmorphism-start-marker,
+  .glassmorphism-end-marker {
+    backdrop-filter: blur(8px) saturate(180%) !important;
+  }
+
+  /* Ultra-visible failed route animations */
+  .failed-route-pulse {
+    animation: failedRoutePulse 1.5s ease-in-out infinite !important;
+  }
+
+  @keyframes failedRoutePulse {
+    0% {
+      stroke-dashoffset: 0;
+      opacity: 0.8;
+      stroke-width: 8px;
+    }
+    50% {
+      opacity: 1;
+      stroke-width: 12px;
+    }
+    100% {
+      stroke-dashoffset: -25px;
+      opacity: 0.8;
+      stroke-width: 8px;
+    }
+  }
+
+  /* Start marker pulse animation */
+  .start-marker-pulse {
+    animation: startPulse 2s ease-in-out infinite !important;
+  }
+
+  @keyframes startPulse {
+    0% {
+      stroke-width: 6px;
+      opacity: 0.4;
+      r: 35px;
+    }
+    50% {
+      stroke-width: 10px;
+      opacity: 0.8;
+      r: 45px;
+    }
+    100% {
+      stroke-width: 6px;
+      opacity: 0.4;
+      r: 35px;
+    }
+  }
+
+  /* End marker pulse animation */
+  .end-marker-pulse {
+    animation: endPulse 2s ease-in-out infinite 0.5s !important;
+  }
+
+  @keyframes endPulse {
+    0% {
+      stroke-width: 6px;
+      opacity: 0.4;
+      r: 35px;
+    }
+    50% {
+      stroke-width: 10px;
+      opacity: 0.8;
+      r: 45px;
+    }
+    100% {
+      stroke-width: 6px;
+      opacity: 0.4;
+      r: 35px;
+    }
+  }
+}
+
+@layer utilities {
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Leaflet overrides */
+.leaflet-container {
+  @apply font-sans;
+}
+
+.leaflet-popup-content-wrapper {
+  @apply rounded-xl shadow-lg;
+}
+
+.leaflet-popup-content {
+  @apply text-sm;
+}
+
+.leaflet-control-zoom {
+  @apply shadow-lg border border-gray-200;
+}
+
+.leaflet-control-zoom a {
+  @apply rounded-lg hover:bg-gray-50;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .floating-button {
+    @apply w-12 h-12;
+  }
+
+  .weather-widget {
+    @apply min-w-[100px] p-3;
+  }
+
+  .navigation-panel {
+    @apply max-h-[70vh] overflow-y-auto;
+  }
+}
+
+/* Transparent Overlay System */
+.transparent-overlay {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.camping-glass-effect {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.7) 100%
+  );
+  backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Camping-Themed Design Tokens */
+:root {
+  /* Camping Primary Colors */
+  --forest-green: #2d5a27;
+  --earth-brown: #8b4513;
+  --sky-blue: #87ceeb;
+  --sunset-orange: #ff6b35;
+
+  /* Transparent Overlays */
+  --overlay-light: rgba(255, 255, 255, 0.9);
+  --overlay-dark: rgba(0, 0, 0, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.2);
+
+  /* Outdoor Visibility */
+  --high-contrast-text: #000000;
+  --emergency-red: #dc3545;
+  --success-green: #28a745;
+}
+
+/* Minimal Header Styles */
+.minimal-header {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Map container adjustment for new header */
+.map-container-with-header {
+  padding-top: 120px;
+}
+
+/* Touch target improvements for outdoor use */
+.outdoor-touch-target {
+  min-height: 48px;
+  min-width: 48px;
+  padding: 12px;
+}
+
+/* High contrast text for outdoor visibility */
+.outdoor-text {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Touch feedback */
+@media (pointer: coarse) {
+  .floating-button:active {
+    @apply scale-95;
+  }
+
+  button:active {
+    @apply scale-95;
+  }
+}
+
+/* Safe area support for mobile devices */
+.safe-area-pb {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-area-pt {
+  padding-top: env(safe-area-inset-top);
+}
+
+/* Custom scrollbar for webkit browsers */
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* POI Marker Mouse Interaction Styles */
+.poi-marker-container {
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.poi-marker-container:hover {
+  transform: scale(1.1);
+  z-index: 1000 !important;
+}
+
+.poi-marker-wrapper:hover {
+  filter: brightness(1.1);
+}
+
+/* Custom tooltip for POI markers */
+.custom-poi-tooltip {
+  background: white !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  max-width: 200px !important;
+}
+
+.custom-poi-tooltip::before {
+  border-top-color: white !important;
+}
+
+/* POI Content - Simple overflow prevention */
+.poi-detail-container {
+  overflow-x: hidden;
+}
+
+.poi-detail-container img,
+.poi-detail-container pre,
+.poi-detail-container code {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Text wrapping for long URLs and addresses */
+.poi-detail-container a,
+.poi-detail-container .break-words {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Mobile-specific constraints - comprehensive text handling */
+@media (max-width: 768px) {
+  .poi-detail-container {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Force ALL text content to break appropriately */
+  .poi-detail-container *,
+  .poi-detail-container p,
+  .poi-detail-container span,
+  .poi-detail-container div,
+  .poi-detail-container h1,
+  .poi-detail-container h2,
+  .poi-detail-container h3,
+  .poi-detail-container h4 {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Aggressive breaking for links and long strings */
+  .poi-detail-container a,
+  .poi-detail-container a[href^="http"] {
+    word-break: break-all;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+}

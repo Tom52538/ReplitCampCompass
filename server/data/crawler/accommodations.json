@@ -1,0 +1,648 @@
+{
+  "beach-house-6a": {
+    "accommodation_id": "beach-house-6a",
+    "name": {
+      "en": "Beach House 6A",
+      "de": "Strandhaus 6A",
+      "fr": "Maison de plage 6A",
+      "nl": "Strandhuis 6A",
+      "it": "Casa sulla spiaggia 6A",
+      "es": "Casa de playa 6A"
+    },
+    "park_id": "roompot-beach-resort",
+    "url": "https://www.roompot.de/parks/roompot-beach-resort/unterkuenfte/beach-house-6a",
+    "type": "beach_house",
+    "capacity": {
+      "max_persons": 6
+    },
+    "description": {
+      "en": "Modern beach house with premium amenities, ideal for families seeking a comfortable coastal retreat.",
+      "de": "Modernes Strandhaus mit Premium-Ausstattung, ideal für Familien, die einen komfortablen Küstenurlaub suchen."
+    },
+    "features": {
+      "en": [
+        "WiFi",
+        "Premium Terrace",
+        "Dishwasher",
+        "Smart TV",
+        "Private Parking",
+        "Garden",
+        "Sea View"
+      ],
+      "de": [
+        "WLAN",
+        "Premium-Terrasse",
+        "Spülmaschine",
+        "Smart TV",
+        "Privater Parkplatz",
+        "Garten",
+        "Meerblick"
+      ]
+    },
+    "price_info": {
+      "en": "From €150/night | Special offers available",
+      "de": "Ab 150€/Nacht | Sonderangebote verfügbar"
+    },
+    "images": {
+      "primary": {
+        "image_id": "bh6a_001",
+        "original_url": "https://example.com/beach_house_6a_001.jpg",
+        "local_path": "server/data/crawler/images/beach_house_6a/exterior_001.jpg",
+        "category": "exterior",
+        "dimensions": {
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "gallery": [
+        {
+          "image_id": "bh6a_002",
+          "original_url": "https://example.com/beach_house_6a_002.jpg",
+          "local_path": "server/data/crawler/images/beach_house_6a/interior_001.jpg",
+          "category": "interior",
+          "dimensions": {
+            "width": 1920,
+            "height": 1080
+          }
+        }
+      ]
+    },
+    "crawled_at": "2025-08-15T12:23:04",
+    "poi_mappings": [
+      "roompot_375",
+      "beach_house_6a_001"
+    ]
+  },
+  "beach-house-6b": {
+    "accommodation_id": "beach-house-6b",
+    "name": {
+      "en": "Beach House 6B",
+      "de": "Strandhaus 6B"
+    },
+    "park_id": "roompot-beach-resort",
+    "type": "beach_house",
+    "capacity": {
+      "max_persons": 6
+    },
+    "description": {
+      "en": "Spacious beach house with modern amenities",
+      "de": "Geräumiges Strandhaus mit moderner Ausstattung"
+    },
+    "features": {
+      "en": [
+        "WiFi",
+        "Terrace",
+        "Dishwasher",
+        "TV",
+        "Parking"
+      ],
+      "de": [
+        "WLAN",
+        "Terrasse",
+        "Spülmaschine",
+        "Fernseher",
+        "Parkplatz"
+      ]
+    },
+    "price_info": {
+      "en": "From €140/night",
+      "de": "Ab 140€/Nacht"
+    },
+    "images": {
+      "primary": {
+        "image_id": "bh6b_001",
+        "original_url": "https://example.com/beach_house_6b_001.jpg",
+        "local_path": "server/data/crawler/images/beach_house_6b/exterior_001.jpg",
+        "category": "exterior",
+        "dimensions": {
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "gallery": [
+        {
+          "image_id": "bh6b_002",
+          "original_url": "https://example.com/beach_house_6b_002.jpg",
+          "local_path": "server/data/crawler/images/beach_house_6b/interior_001.jpg",
+          "category": "interior",
+          "dimensions": {
+            "width": 1920,
+            "height": 1080
+          }
+        }
+      ]
+    },
+    "crawled_at": "2025-08-15T12:23:04",
+    "poi_mappings": [
+      "roompot_376",
+      "beach_house_6b_001"
+    ]
+  },
+  "lodge-4": {
+    "accommodation_id": "lodge-4",
+    "name": {
+      "en": "Lodge 4",
+      "de": "Lodge 4"
+    },
+    "park_id": "roompot-beach-resort",
+    "type": "lodge",
+    "capacity": {
+      "max_persons": 4
+    },
+    "description": {
+      "en": "Comfortable lodge with modern amenities",
+      "de": "Komfortable Lodge mit moderner Ausstattung"
+    },
+    "features": {
+      "en": [
+        "WiFi",
+        "Terrace",
+        "TV",
+        "Parking"
+      ],
+      "de": [
+        "WLAN",
+        "Terrasse",
+        "Fernseher",
+        "Parkplatz"
+      ]
+    },
+    "price_info": {
+      "en": "From €120/night",
+      "de": "Ab 120€/Nacht"
+    },
+    "images": {
+      "primary": {
+        "image_id": "l4_001",
+        "original_url": "https://example.com/lodge_4_001.jpg",
+        "local_path": "server/data/crawler/images/lodge_4/exterior_001.jpg",
+        "category": "exterior",
+        "dimensions": {
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "gallery": [
+        {
+          "image_id": "l4_002",
+          "original_url": "https://example.com/lodge_4_002.jpg",
+          "local_path": "server/data/crawler/images/lodge_4/interior_001.jpg",
+          "category": "interior",
+          "dimensions": {
+            "width": 1920,
+            "height": 1080
+          }
+        }
+      ]
+    },
+    "crawled_at": "2025-08-15T12:23:04",
+    "poi_mappings": [
+      "roompot_436",
+      "lodge_4_001"
+    ]
+  },
+  "beach-house-4": {
+    "accommodation_id": "beach-house-4",
+    "name": {
+      "en": "Beach House 4",
+      "de": "Strandhaus 4"
+    },
+    "park_id": "roompot-beach-resort",
+    "type": "beach_house",
+    "capacity": {
+      "max_persons": 4
+    },
+    "description": {
+      "en": "Cozy beach house for smaller families",
+      "de": "Gemütliches Strandhaus für kleinere Familien"
+    },
+    "features": {
+      "en": [
+        "WiFi",
+        "Terrace",
+        "TV",
+        "Parking"
+      ],
+      "de": [
+        "WLAN",
+        "Terrasse",
+        "Fernseher",
+        "Parkplatz"
+      ]
+    },
+    "price_info": {
+      "en": "From €100/night",
+      "de": "Ab 100€/Nacht"
+    },
+    "images": {
+      "primary": {
+        "image_id": "bh4_001",
+        "original_url": "https://example.com/beach_house_4_001.jpg",
+        "local_path": "server/data/crawler/images/beach_house_4/exterior_001.jpg",
+        "category": "exterior",
+        "dimensions": {
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "gallery": [
+        {
+          "image_id": "bh4_002",
+          "original_url": "https://example.com/beach_house_4_002.jpg",
+          "local_path": "server/data/crawler/images/beach_house_4/interior_001.jpg",
+          "category": "interior",
+          "dimensions": {
+            "width": 1920,
+            "height": 1080
+          }
+        }
+      ]
+    },
+    "crawled_at": "2025-08-15T12:23:04",
+    "poi_mappings": [
+      "roompot_531",
+      "beach_house_4_001",
+      "beach_house_4_002"
+    ]
+  },
+  "bungalow-4a": {
+    "accommodation_id": "bungalow-4a",
+    "name": {
+      "en": "Bungalow 4A - Water Village",
+      "de": "Bungalow 4A - Water Village"
+    },
+    "park_id": "water-village",
+    "url": "https://www.roompot.de/parks/water-village/unterkuenfte/bungalow-4a",
+    "type": "bungalow",
+    "capacity": {
+      "max_persons": 4
+    },
+    "description": {
+      "en": "Modern 4-person bungalow with 2 bedrooms and 2 bathrooms, featuring contemporary amenities and terrace in the scenic Water Village.",
+      "de": "Moderner 4-Personen-Bungalow mit 2 Schlafzimmern und 2 Badezimmern, ausgestattet mit zeitgemäßen Annehmlichkeiten und Terrasse im malerischen Water Village."
+    },
+    "features": {
+      "en": [
+        "Free WiFi",
+        "2 Bedrooms",
+        "2 Bathrooms",
+        "Smart TV",
+        "TV in Bedroom",
+        "Ensuite Bathrooms",
+        "Microwave",
+        "Dishwasher",
+        "Combination Microwave",
+        "Terrace",
+        "Safe (free)",
+        "Suitable for 4 persons"
+      ],
+      "de": [
+        "Gratis WiFi",
+        "2 Schlafzimmer",
+        "2 Badezimmer",
+        "Smart-TV",
+        "TV in Schlafzimmer",
+        "Ensuite Badezimmern",
+        "Mikrowelle",
+        "Geschirrspülmaschine",
+        "Kombi-Mikrowelle",
+        "Terrasse",
+        "Safe (gratis)",
+        "Geeignet für 4 Personen"
+      ]
+    },
+    "price_info": {
+      "en": "Price on request | Contact for availability",
+      "de": "Preis auf Anfrage | Kontakt für Verfügbarkeit"
+    },
+    "images": {
+      "primary": {
+        "image_id": "bg4a_001",
+        "original_url": "https://www.roompot.de/bungalow-4a-primary",
+        "local_path": "server/data/crawler/images/bungalow_4a/groundplan_001.jpg",
+        "category": "floorplan",
+        "dimensions": {
+          "width": 1024,
+          "height": 768
+        }
+      },
+      "gallery": [
+        {
+          "image_id": "bg4a_002",
+          "original_url": "https://www.roompot.de/bungalow-4a-interior-001",
+          "local_path": "server/data/crawler/images/bungalow_4a/interior_001.jpg",
+          "category": "interior",
+          "dimensions": {
+            "width": 1024,
+            "height": 683
+          }
+        },
+        {
+          "image_id": "bg4a_003",
+          "original_url": "https://www.roompot.de/bungalow-4a-interior-002",
+          "local_path": "server/data/crawler/images/bungalow_4a/interior_002.jpg",
+          "category": "interior",
+          "dimensions": {
+            "width": 1024,
+            "height": 683
+          }
+        }
+      ]
+    },
+    "crawled_at": "2025-09-12T19:18:26",
+    "poi_mappings": [
+      "bungalow_4a_001",
+      "water_village_bungalow_4a"
+    ]
+  },
+  "bungalow-6b": {
+    "accommodation_id": "bungalow-6b",
+    "name": {
+      "en": "Bungalow 6B - Water Village",
+      "de": "Bungalow 6B - Water Village"
+    },
+    "park_id": "water-village",
+    "url": "https://www.roompot.de/parks/water-village/unterkuenfte/bungalow-6b",
+    "type": "bungalow",
+    "capacity": {
+      "max_persons": 6
+    },
+    "description": {
+      "en": "Spacious 6-person bungalow in the scenic Water Village with modern amenities and comprehensive facilities.",
+      "de": "Geräumiger 6-Personen-Bungalow im malerischen Water Village mit modernen Annehmlichkeiten und umfassender Ausstattung."
+    },
+    "features": {
+      "en": [
+        "Free WiFi",
+        "Spacious Living Area",
+        "Modern Kitchen",
+        "Multiple Bedrooms",
+        "Bathroom Facilities",
+        "Terrace/Outdoor Space",
+        "Suitable for 6 persons"
+      ],
+      "de": [
+        "Gratis WiFi",
+        "Geräumiger Wohnbereich",
+        "Moderne Küche",
+        "Mehrere Schlafzimmer",
+        "Badezimmer-Ausstattung",
+        "Terrasse/Außenbereich",
+        "Geeignet für 6 Personen"
+      ]
+    },
+    "price_info": {
+      "en": "Price on request | Contact for availability",
+      "de": "Preis auf Anfrage | Kontakt für Verfügbarkeit"
+    },
+    "images": {
+      "primary": {
+        "image_id": "bg6b_001",
+        "original_url": "https://www.roompot.de/bungalow-6b-exterior",
+        "local_path": "server/data/crawler/images/bungalow_6b/exterior_001.jpg",
+        "category": "exterior",
+        "dimensions": {
+          "width": 1024,
+          "height": 682
+        }
+      },
+      "gallery": [
+        {
+          "image_id": "bg6b_002",
+          "original_url": "https://www.roompot.de/bungalow-6b-groundplan-001",
+          "local_path": "server/data/crawler/images/bungalow_6b/groundplan_001.jpg",
+          "category": "floorplan",
+          "dimensions": {
+            "width": 1024,
+            "height": 768
+          }
+        },
+        {
+          "image_id": "bg6b_003",
+          "original_url": "https://www.roompot.de/bungalow-6b-groundplan-002",
+          "local_path": "server/data/crawler/images/bungalow_6b/groundplan_002.jpg",
+          "category": "floorplan",
+          "dimensions": {
+            "width": 1024,
+            "height": 768
+          }
+        },
+        {
+          "image_id": "bg6b_004",
+          "original_url": "https://www.roompot.de/bungalow-6b-interior",
+          "local_path": "server/data/crawler/images/bungalow_6b/interior_001.jpg",
+          "category": "interior",
+          "dimensions": {
+            "width": 1024,
+            "height": 682
+          }
+        }
+      ]
+    },
+    "crawled_at": "2025-09-12T16:50:24",
+    "poi_mappings": [
+      "bungalow_6b_001",
+      "water_village_bungalow_6b"
+    ]
+  },
+  "bungalow-6a": {
+    "accommodation_id": "bungalow-6a",
+    "name": {
+      "en": "Bungalow 6A - Water Village",
+      "de": "Bungalow 6A - Water Village"
+    },
+    "park_id": "water-village",
+    "url": "https://www.roompot.de/parks/water-village/unterkuenfte/bungalow-6a",
+    "type": "bungalow",
+    "capacity": {
+      "max_persons": 6
+    },
+    "description": {
+      "en": "Modern 6-person bungalow with 2 bedrooms and 2 bathrooms, featuring premium amenities and comprehensive facilities in the scenic Water Village.",
+      "de": "Moderner 6-Personen-Bungalow mit 2 Schlafzimmern und 2 Badezimmern, ausgestattet mit Premium-Ausstattung und umfassenden Einrichtungen im malerischen Water Village."
+    },
+    "features": {
+      "en": [
+        "Minimum 2 Bedrooms",
+        "Free WiFi",
+        "Suitable for 6 persons",
+        "Safe (free)",
+        "2 Bedrooms",
+        "2 Bedrooms Downstairs",
+        "Downstairs Bedrooms",
+        "TV in Bedroom",
+        "Smart TV",
+        "2 Bathrooms",
+        "2 Bathrooms Downstairs",
+        "Downstairs Bathrooms",
+        "Ensuite Bathrooms",
+        "Microwave",
+        "Dishwasher"
+      ],
+      "de": [
+        "Mindestens 2 Schlafzimmer",
+        "Gratis WiFi",
+        "Geeignet für 6 Personen",
+        "Safe (gratis)",
+        "Anzahl Schlafzimmer: 2",
+        "Schlafzimmer unten: 2",
+        "Schlafzimmer unten",
+        "TV in Schlafzimmer",
+        "Smart-TV",
+        "Zahl der Badezimmer: 2",
+        "Badezimmer unten: 2",
+        "Badezimmer unten",
+        "Ensuite Badezimmern",
+        "Mikrowelle",
+        "Geschirrspülmaschine"
+      ]
+    },
+    "price_info": {
+      "en": "Price on request | Contact for availability",
+      "de": "Preis auf Anfrage"
+    },
+    "images": {
+      "primary": {
+        "image_id": "bg6a_001",
+        "original_url": "https://mss-p-014-delivery.stylelabs.cloud/api/public/content/9240619-3x2?t=w1024",
+        "local_path": "server/data/crawler/images/bungalow_6a/experior_001.jpg",
+        "category": "exterior",
+        "dimensions": {
+          "width": 1024,
+          "height": 682
+        }
+      },
+      "gallery": [
+        {
+          "image_id": "bg6a_002",
+          "original_url": "https://mss-p-014-delivery.stylelabs.cloud/api/public/content/9240426-original?t=w1024",
+          "local_path": "server/data/crawler/images/bungalow_6a/groundplan_001.jpg",
+          "category": "floorplan",
+          "dimensions": {
+            "width": 1024,
+            "height": 768
+          }
+        },
+        {
+          "image_id": "bg6a_003",
+          "original_url": "https://mss-p-014-delivery.stylelabs.cloud/api/public/content/9240437-original?t=w1024",
+          "local_path": "server/data/crawler/images/bungalow_6a/groundplan_002.jpg",
+          "category": "floorplan",
+          "dimensions": {
+            "width": 1024,
+            "height": 768
+          }
+        },
+        {
+          "image_id": "bg6a_004",
+          "original_url": "https://www.roompot.de/bungalow-6a-interior",
+          "local_path": "server/data/crawler/images/bungalow_6a/interior_001.jpg",
+          "category": "interior",
+          "dimensions": {
+            "width": 1024,
+            "height": 682
+          }
+        }
+      ]
+    },
+    "crawled_at": "2025-09-12T19:23:20.173078",
+    "poi_mappings": [
+      "bungalow_6a_001",
+      "water_village_bungalow_6a"
+    ]
+  },
+  "bungalow-4b": {
+    "accommodation_id": "bungalow-4b",
+    "name": {
+      "en": "Bungalow 4B - Water Village",
+      "de": "Bungalow 4B - Water Village"
+    },
+    "park_id": "water-village",
+    "url": "https://www.roompot.de/parks/water-village/unterkuenfte/bungalow-4b",
+    "type": "bungalow",
+    "capacity": {
+      "max_persons": 4
+    },
+    "description": {
+      "en": "Modern 4-person bungalow with 2 bedrooms and 2 ensuite bathrooms, featuring contemporary amenities including Smart TV and combination microwave in the scenic Water Village.",
+      "de": "Moderner 4-Personen-Bungalow mit 2 Schlafzimmern und 2 Ensuite-Badezimmern, ausgestattet mit zeitgemäßen Annehmlichkeiten wie Smart-TV und Kombi-Mikrowelle im malerischen Water Village."
+    },
+    "features": {
+      "en": [
+        "Minimum 2 Bedrooms",
+        "Free WiFi",
+        "Suitable for 4 persons",
+        "Safe (free)",
+        "2 Bedrooms",
+        "2 Bedrooms Downstairs",
+        "TV in Bedroom",
+        "Smart TV",
+        "2 Bathrooms",
+        "2 Bathrooms Downstairs",
+        "Ensuite Bathrooms",
+        "Dishwasher",
+        "Combination Microwave",
+        "Terrace"
+      ],
+      "de": [
+        "Mindestens 2 Schlafzimmer",
+        "Gratis WiFi",
+        "Geeignet für 4 Personen",
+        "Safe (gratis)",
+        "Anzahl Schlafzimmer: 2",
+        "Schlafzimmer unten: 2",
+        "TV in Schlafzimmer",
+        "Smart-TV",
+        "Zahl der Badezimmer: 2",
+        "Badezimmer unten: 2",
+        "Ensuite Badezimmern",
+        "Geschirrspülmaschine",
+        "Kombi-Mikrowelle",
+        "Terrasse"
+      ]
+    },
+    "price_info": {
+      "en": "Price on request | Contact for availability",
+      "de": "Preis auf Anfrage"
+    },
+    "images": {
+      "primary": {
+        "image_id": "bg4b_001",
+        "original_url": "https://mss-p-014-delivery.stylelabs.cloud/api/public/content/9239742-3x2?t=w1024",
+        "local_path": "server/data/crawler/images/bungalow_4b/exterior_001.jpg",
+        "category": "exterior",
+        "dimensions": {
+          "width": 1024,
+          "height": 682
+        }
+      },
+      "gallery": [
+        {
+          "image_id": "bg4b_002",
+          "original_url": "https://mss-p-014-delivery.stylelabs.cloud/api/public/content/9239834-3x2?t=w1024",
+          "local_path": "server/data/crawler/images/bungalow_4b/groundplan.jpg",
+          "category": "floorplan",
+          "dimensions": {
+            "width": 1024,
+            "height": 682
+          }
+        },
+        {
+          "image_id": "bg4b_003",
+          "original_url": "https://mss-p-014-delivery.stylelabs.cloud/api/public/content/9239687-original?t=w1024",
+          "local_path": "server/data/crawler/images/bungalow_4b/interior_001.jpg",
+          "category": "interior",
+          "dimensions": {
+            "width": 1024,
+            "height": 768
+          }
+        }
+      ]
+    },
+    "crawled_at": "2025-09-12T19:20:53.589069",
+    "poi_mappings": [
+      "bungalow_4b_001",
+      "water_village_bungalow_4b"
+    ]
+  }
+}

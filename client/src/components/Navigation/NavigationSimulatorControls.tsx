@@ -1,0 +1,1 @@
+// NavigationSimulatorControls component removed as requested by user

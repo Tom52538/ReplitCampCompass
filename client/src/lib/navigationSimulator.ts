@@ -1,0 +1,1 @@
+// NavigationSimulator functionality removed as requested by user
