@@ -55,7 +55,9 @@ export const EnhancedMapControls: React.FC<EnhancedMapControlsProps> = ({
   compassMode,
   onToggleCompass,
   showNetworkOverlay,
-  onToggleNetworkOverlay
+  onToggleNetworkOverlay,
+  isDebugMode,
+  onToggleDebugMode
 }) => {
   const [showVoicePanel, setShowVoicePanel] = useState(false);
   const mapStyleOptions = Object.entries(mapStyleConfig) as [keyof typeof mapStyleConfig, typeof mapStyleConfig[keyof typeof mapStyleConfig]][];
