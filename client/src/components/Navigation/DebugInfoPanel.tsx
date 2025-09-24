@@ -37,7 +37,7 @@ export const DebugInfoPanel: React.FC<DebugInfoPanelProps> = ({ debugInfo, rerou
       <div className="space-y-1">
         <DebugDataItem label="Current Step" value={`${(debugInfo.currentStep || 0) + 1}`} />
         <DebugDataItem label="Dist to Next" value={`${(debugInfo.distanceToNext * 1000).toFixed(1)}m`} />
-        <DebugDataItem label="Off-Route Dist" value={`${(debugInfo.offRouteDistance || 0).toFixed(1)}m`} />
+        <DebugDataItem label="Off-Route Dist" value={`${((debugInfo.offRouteDistance || 0) * 1000).toFixed(1)}m`} />
         <DebugDataItem label="Is Off-Route" value={debugInfo.isOffRoute ? 'YES' : 'NO'} />
         <DebugDataItem label="Reroute Cooldown" value={reroutingCooldown ? 'YES' : 'NO'} />
         <DebugDataItem label="Raw Lat" value={debugInfo.rawGpsPosition?.lat.toFixed(6)} />
