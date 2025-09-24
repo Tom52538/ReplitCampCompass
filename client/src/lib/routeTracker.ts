@@ -13,6 +13,10 @@ export interface RouteProgress {
   currentSpeed: number;
   averageSpeed: number;
   dynamicETA: ETAUpdate;
+  // Debugging fields
+  rawGpsPosition?: Coordinates;
+  snappedGpsPosition?: Coordinates;
+  offRouteDistance?: number;
 }
 
 export class RouteTracker {
@@ -253,7 +257,7 @@ export class RouteTracker {
     // Estimate remaining time based on speed tracking
     const estimatedTimeRemaining = dynamicETA.estimatedTimeRemaining;
 
-    const progress = {
+    const progress: RouteProgress = {
       currentStep: this.currentStepIndex,
       distanceToNext,
       distanceRemaining,
@@ -263,7 +267,11 @@ export class RouteTracker {
       estimatedTimeRemaining,
       currentSpeed: speedData.currentSpeed,
       averageSpeed: speedData.averageSpeed,
-      dynamicETA
+      dynamicETA,
+      // Add debug info
+      rawGpsPosition: position,
+      snappedGpsPosition: routeInfo.point,
+      offRouteDistance: routeInfo.distance,
     };
     
     console.log('🗺️ ROUTE TRACKER: Progress calculated:', {
