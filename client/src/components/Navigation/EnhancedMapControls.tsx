@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Volume2, VolumeX, Layers, Navigation, Car, Bike, PersonStanding, Compass, Settings, Mic } from 'lucide-react';
+import { Volume2, VolumeX, Layers, Navigation, Car, Bike, PersonStanding, Compass, Settings, Mic, Bug } from 'lucide-react';
 import { GPSToggle } from './GPSToggle';
 import { VoiceSelection } from './VoiceSelection';
 import { VoiceControlPanel } from './VoiceControlPanel';
+
+const isDev = process.env.NODE_ENV === 'development';
 
 interface EnhancedMapControlsProps {
   onToggleVoice: () => void;
@@ -21,6 +23,8 @@ interface EnhancedMapControlsProps {
   onToggleCompass: () => void;
   showNetworkOverlay: boolean;
   onToggleNetworkOverlay: () => void;
+  isDebugMode: boolean;
+  onToggleDebugMode: () => void;
 }
 
 const mapStyleConfig = {
@@ -186,6 +190,14 @@ export const EnhancedMapControls: React.FC<EnhancedMapControlsProps> = ({
           <Layers className="w-5 h-5 text-white" />,
           showNetworkOverlay ? 'Netzwerk-Overlay ausblenden' : 'Netzwerk-Overlay anzeigen',
           showNetworkOverlay
+        )}
+
+        {/* Debug Mode Toggle - Only in Dev */}
+        {isDev && renderControlButton(
+          onToggleDebugMode,
+          <Bug className="w-5 h-5 text-white" />,
+          isDebugMode ? 'Debug-Modus deaktivieren' : 'Debug-Modus aktivieren',
+          isDebugMode
         )}
       </div>
 

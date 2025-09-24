@@ -32,6 +32,8 @@ import { POILocalizationDebugger } from '@/components/Navigation/POILocalization
 import { POILocalizationTestPanel } from '@/components/Navigation/POILocalizationTestPanel';
 import { VoiceControlPanel } from '@/components/Navigation/VoiceControlPanel';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { DebugOverlay } from '@/components/Navigation/DebugOverlay';
+import { DebugInfoPanel } from '@/components/Navigation/DebugInfoPanel';
 // Removed SmartBottomDrawer - POIs show directly on map
 import { TopBar } from '@/components/Navigation/TopBar'; // Assuming TopBar is imported for the new structure
 import MobileMemoryMonitor from '@/components/UI/MobileMemoryMonitor'; // Assuming MobileMemoryMonitor is available
@@ -109,6 +111,26 @@ export default function Navigation() {
   const [mapOrientation, setMapOrientation] = useState<'north' | 'driving'>('north');
   const [mapStyle, setMapStyle] = useState<'outdoors' | 'satellite' | 'streets' | 'navigation'>('outdoors');
   const [showDebugPanel, setShowDebugPanel] = useState(false);
+  const [isDebugMode, setIsDebugMode] = useState(false);
+
+  const toggleDebugMode = useCallback(() => {
+    setIsDebugMode(prev => !prev);
+  }, []);
+
+  useEffect(() => {
+    if (isDebugMode) {
+      const networkFile = currentSite === 'zuhause'
+        ? '/zuhause_routing_network.geojson'
+        : '/roompot_routing_network.geojson';
+
+      fetch(networkFile)
+        .then(res => res.json())
+        .then(data => setNetworkGeoJson(data))
+        .catch(err => console.error("Failed to load network GeoJSON:", err));
+    } else {
+      setNetworkGeoJson(null); // Clear data when debug mode is off
+    }
+  }, [isDebugMode, currentSite]);
 
   // Travel mode state for routing
   const [travelMode, setTravelMode] = useState<'car' | 'bike' | 'pedestrian'>('pedestrian');
@@ -122,6 +144,8 @@ export default function Navigation() {
   const [currentInstruction, setCurrentInstruction] = useState<string>('');
   const [nextDistance, setNextDistance] = useState<string>('');
   const [routeProgress, setRouteProgress] = useState<any>(null);
+  const [debugInfo, setDebugInfo] = useState<any>(null);
+  const [networkGeoJson, setNetworkGeoJson] = useState<any>(null);
 
 
   // Network Debugging State
@@ -1307,6 +1331,10 @@ export default function Navigation() {
       const progress = routeTrackerRef.current.updatePosition(trackingPosition, travelMode);
 
       setRouteProgress(progress);
+      // Also set the full debug info object if debug mode is active
+      if (isDebugMode) {
+        setDebugInfo(progress);
+      }
       setNextDistance(formatDistance(progress.distanceToNext));
 
       // KRITISCHER FIX: Aktualisiere currentInstruction bei jedem Step-Change
@@ -1322,7 +1350,7 @@ export default function Navigation() {
       // Update map center to follow user during navigation
       setMapCenter(trackingPosition);
     }
-  }, [isNavigating, trackingPosition, useRealGPS, currentRoute, travelMode]);
+  }, [isNavigating, trackingPosition, useRealGPS, currentRoute, travelMode, isDebugMode]);
 
   console.log('🔍 Navigation: Starting render...', {
     position: !!trackingPosition,
@@ -1445,6 +1473,14 @@ export default function Navigation() {
                 destinationMarker={destinationMarker}
                 showNetworkOverlay={showNetworkOverlay}
               >
+                {isDebugMode && isNavigating && (
+                  <DebugOverlay
+                    rawGpsPosition={debugInfo?.rawGpsPosition}
+                    snappedGpsPosition={debugInfo?.snappedGpsPosition}
+                    rerouteThreshold={5}
+                    networkGeoJson={networkGeoJson}
+                  />
+                )}
               </MapContainer>
             </div>
           </div>
@@ -1502,6 +1538,8 @@ export default function Navigation() {
             onToggleCompass={() => setMapOrientation(prev => prev === 'north' ? 'driving' : 'north')}
             showNetworkOverlay={showNetworkOverlay}
             onToggleNetworkOverlay={() => setShowNetworkOverlay(!showNetworkOverlay)}
+            isDebugMode={isDebugMode}
+            onToggleDebugMode={toggleDebugMode}
           />
 
 
@@ -1571,6 +1609,9 @@ export default function Navigation() {
             </>
           )}
 
+          {isDebugMode && isNavigating && (
+            <DebugInfoPanel debugInfo={debugInfo} reroutingCooldown={reroutingRef.current} />
+          )}
         </div>
       </ErrorBoundary>
     );
