@@ -1280,10 +1280,19 @@ export default function Navigation() {
         }
       );
 
-      // Set initial instruction
+      // Set initial instruction and announce it
       if (currentRoute.instructions.length > 0) {
-        setCurrentInstruction(currentRoute.instructions[0].instruction);
+        const firstInstructionText = currentRoute.instructions[0].instruction;
+        setCurrentInstruction(firstInstructionText);
         setNextDistance(currentRoute.instructions[0].distance);
+
+        // CRITICAL FIX: Announce the first instruction immediately
+        if (secureTTSRef.current && voiceEnabled) {
+          console.log('🎤 ElevenLabs Initial Route TTS:', firstInstructionText);
+          secureTTSRef.current.speak(firstInstructionText, 'start').catch(err =>
+            console.error('Initial TTS Error:', err)
+          );
+        }
       }
     }
 
