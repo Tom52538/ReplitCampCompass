@@ -21,17 +21,7 @@ export const DebugOverlay: React.FC<DebugOverlayProps> = ({
   React.useEffect(() => {
     const layers = new L.LayerGroup();
 
-    // Raw GPS Position (Red Dot)
-    if (rawGpsPosition) {
-      L.circleMarker([rawGpsPosition.lat, rawGpsPosition.lng], {
-        radius: 6,
-        color: 'red',
-        fillColor: '#f03',
-        fillOpacity: 0.8,
-      }).addTo(layers);
-    }
-
-    // Routing Network GeoJSON
+    // Routing Network GeoJSON (drawn first, as a base layer)
     if (networkGeoJson) {
       L.geoJSON(networkGeoJson, {
         style: {
@@ -39,6 +29,16 @@ export const DebugOverlay: React.FC<DebugOverlayProps> = ({
           weight: 2,
           opacity: 0.6,
         },
+      }).addTo(layers);
+    }
+
+    // Raw GPS Position (Red Dot)
+    if (rawGpsPosition) {
+      L.circleMarker([rawGpsPosition.lat, rawGpsPosition.lng], {
+        radius: 6,
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.8,
       }).addTo(layers);
     }
 
