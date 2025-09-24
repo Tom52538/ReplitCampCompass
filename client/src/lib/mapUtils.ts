@@ -2,8 +2,8 @@ import { Coordinates } from '@/types/navigation';
 import { calculateDistance as calcDistanceMeters, formatDistance as formatDistanceShared, toRadians } from '../../../shared/utils';
 
 export const calculateDistance = (point1: Coordinates, point2: Coordinates): number => {
-  // Convert from meters to kilometers for backward compatibility
-  return calcDistanceMeters(point1.lat, point1.lng, point2.lat, point2.lng) / 1000;
+  // Return distance in meters, as expected by formatDistance
+  return calcDistanceMeters(point1.lat, point1.lng, point2.lat, point2.lng);
 };
 
 export const formatDistance = (distanceInMeters: number): string => {
