@@ -859,9 +859,6 @@ export default function Navigation() {
 
       setIsNavigating(true);
 
-      // Auto-switch to driving orientation during navigation
-      setMapOrientation('driving');
-
       mobileLogger.logPerformance('Navigation setup', startTime);
       mobileLogger.log('NAVIGATION', `Navigation started successfully to ${normalizePoiString(poi.name)}`);
       setUIMode('navigation');
