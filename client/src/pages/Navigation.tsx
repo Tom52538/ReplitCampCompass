@@ -182,8 +182,8 @@ export default function Navigation() {
         setCurrentBearing(routeBearing);
       } else {
         // Default driving direction simulation for testing
-        setCurrentBearing(45); // Northeast direction for testing
-        console.log('📍 Using default test bearing: 45 degrees');
+        setCurrentBearing(90); // Changed from 45 to 90 degrees as requested
+        console.log('📍 Using default test bearing: 90 degrees');
       }
       // Store current position for next calculation
       if (livePosition) {
@@ -874,9 +874,6 @@ export default function Navigation() {
       }
 
       setIsNavigating(true);
-
-      // Auto-switch to driving orientation during navigation
-      setMapOrientation('driving');
 
       mobileLogger.logPerformance('Navigation setup', startTime);
       mobileLogger.log('NAVIGATION', `Navigation started successfully to ${normalizePoiString(poi.name)}`);
