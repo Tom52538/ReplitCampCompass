@@ -2,8 +2,19 @@ import { Coordinates } from '@/types/navigation';
 import { calculateDistance as calcDistanceMeters, formatDistance as formatDistanceShared, toRadians } from '../../../shared/utils';
 
 export const calculateDistance = (point1: Coordinates, point2: Coordinates): number => {
-  // Convert from meters to kilometers for backward compatibility
-  return calcDistanceMeters(point1.lat, point1.lng, point2.lat, point2.lng) / 1000;
+  const R = 6371e3; // Earth's radius in meters
+  const lat1 = toRadians(point1.lat);
+  const lat2 = toRadians(point2.lat);
+  const deltaLat = toRadians(point2.lat - point1.lat);
+  const deltaLng = toRadians(point2.lng - point1.lng);
+
+  const a = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
+            Math.cos(lat1) * Math.cos(lat2) *
+            Math.sin(deltaLng / 2) * Math.sin(deltaLng / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  const distance = R * c; // in meters
+  return distance;
 };
 
 export const formatDistance = (distanceInMeters: number): string => {

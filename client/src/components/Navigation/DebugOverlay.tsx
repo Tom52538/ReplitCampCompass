@@ -35,20 +35,22 @@ export const DebugOverlay: React.FC<DebugOverlayProps> = ({
     // Raw GPS Position (Red Dot)
     if (rawGpsPosition) {
       L.circleMarker([rawGpsPosition.lat, rawGpsPosition.lng], {
-        radius: 6,
+        radius: 10, // Increased radius
         color: 'red',
         fillColor: '#f03',
-        fillOpacity: 0.8,
+        fillOpacity: 0.9,
+        weight: 2,
       }).addTo(layers);
     }
 
     // Snapped GPS Position (Green Dot)
     if (snappedGpsPosition) {
       L.circleMarker([snappedGpsPosition.lat, snappedGpsPosition.lng], {
-        radius: 6,
+        radius: 10, // Increased radius
         color: 'green',
         fillColor: '#28a745',
-        fillOpacity: 0.8,
+        fillOpacity: 0.9,
+        weight: 2,
       }).addTo(layers);
     }
 
@@ -57,9 +59,9 @@ export const DebugOverlay: React.FC<DebugOverlayProps> = ({
         L.circle([snappedGpsPosition.lat, snappedGpsPosition.lng], {
         radius: rerouteThreshold,
         color: '#007bff',
-        fillOpacity: 0.1,
-        weight: 2,
-        dashArray: '5, 5',
+        fillOpacity: 0.2,
+        weight: 4, // Increased weight
+        dashArray: '10, 10',
       }).addTo(layers);
     }
 
