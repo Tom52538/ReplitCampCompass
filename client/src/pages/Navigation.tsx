@@ -138,7 +138,8 @@ export default function Navigation() {
   // Navigation tracking state - ElevenLabs TTS
   const secureTTSRef = useRef<SecureTTSClient | null>(null);
   const routeTrackerRef = useRef<RouteTracker | null>(null);
-  const reroutingRef = useRef(false);
+  const reroutingRef = useRef(false); // To be replaced by debounce timer
+  const rerouteDebounceTimerRef = useRef<NodeJS.Timeout | null>(null);
   const destinationRef = useRef<Coordinates | null>(null);
   const campgroundRerouteRef = useRef<CampgroundRerouteDetector | null>(null);
   const [currentInstruction, setCurrentInstruction] = useState<string>('');
@@ -1252,52 +1253,51 @@ export default function Navigation() {
           handleEndNavigation();
         },
         (offRouteDistance) => {
-          // Off route detection with real re-routing
-          console.log('Off route detected, distance:', offRouteDistance);
+          // Off route detection with a more robust debouncing mechanism
+          console.log(`Off-route detected by ${offRouteDistance.toFixed(1)}m. Debouncing reroute...`);
 
-          // CRITICAL: Mock GPS Mode - disable off-route re-routing to prevent loops
-          if (!useRealGPS) {
-            console.log('🔍 MOCK GPS MODE: Off-route re-routing disabled to prevent loops - NO TTS');
+          if (!useRealGPS || !destinationRef.current) {
             return;
           }
 
-          // Only announce re-routing if we're actually doing it
-          if (secureTTSRef.current && voiceEnabled) {
-            console.log('🔄 ElevenLabs Route neu berechnen');
-            secureTTSRef.current.speak('Route wird neu berechnet', 'warning').catch(err =>
-              console.error('TTS Error:', err)
-            );
+          // Clear any previously scheduled reroute to avoid multiple requests
+          if (rerouteDebounceTimerRef.current) {
+            clearTimeout(rerouteDebounceTimerRef.current);
           }
-          
-          // Hysterese: 5m für Campingplatz/Dorf Navigation - schnelle Reaktion bei kurzen Wegen
-          if (!reroutingRef.current && offRouteDistance > 5 && destinationRef.current) {
-            reroutingRef.current = true;
-            (async () => {
-              try {
-                const profile = travelMode === 'car' ? 'driving' : travelMode === 'bike' ? 'cycling' : 'walking';
-                const newRoute = await getRoute.mutateAsync({
-                  from: trackingPosition || currentPosition,  // sicherheitshalber mit fallback
-                  to: destinationRef.current!,         // Ziel beibehalten
-                  mode: profile
-                });
-                setCurrentRoute(newRoute);
-                setCurrentInstruction(newRoute.instructions?.[0]?.instruction || 'Weiter geradeaus');
-                setNextDistance(newRoute.instructions?.[0]?.distance || '0 m');
 
-                // Tracker neu starten
-                if (routeTrackerRef.current) {
-                  routeTrackerRef.current.reset();
-                  routeTrackerRef.current = null;
-                }
-                // Trigger useEffect to create new tracker with new route
-              } catch (err) {
-                console.error('Re-route error', err);
-              } finally {
-                // kleine Abkühlphase
-                setTimeout(() => { reroutingRef.current = false; }, 3000);
-              }
-            })();
+          // Announce rerouting only if we aren't already in the process
+          if (!reroutingRef.current) {
+            reroutingRef.current = true; // Set flag immediately to prevent multiple announcements
+            if (secureTTSRef.current && voiceEnabled) {
+              console.log('🔄 Announcing re-route');
+              secureTTSRef.current.speak('Route wird neu berechnet', 'warning').catch(err =>
+                console.error('TTS Error:', err)
+              );
+            }
           }
+
+          // Schedule the actual reroute calculation after a delay
+          rerouteDebounceTimerRef.current = setTimeout(async () => {
+            try {
+              console.log('▶️ Executing debounced reroute calculation...');
+              const profile = travelMode === 'car' ? 'driving' : travelMode === 'bike' ? 'cycling' : 'walking';
+              const newRoute = await getRoute.mutateAsync({
+                from: trackingPosition || currentPosition,
+                to: destinationRef.current!,
+                mode: profile
+              });
+
+              setCurrentRoute(newRoute);
+              // The main useEffect will handle re-initializing the tracker with the new route
+
+            } catch (err) {
+              console.error('Debounced re-route failed:', err);
+            } finally {
+              // Reset the flag after the operation is complete
+              reroutingRef.current = false;
+              rerouteDebounceTimerRef.current = null;
+            }
+          }, 2500); // 2.5 second debounce delay
         }
       );
 
