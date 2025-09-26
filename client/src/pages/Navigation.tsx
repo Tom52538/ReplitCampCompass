@@ -19,7 +19,7 @@ import { useLanguage } from '@/hooks/useLanguage';
 import { useNavigationTracking } from '@/hooks/useNavigationTracking';
 import { useSiteManager } from '@/lib/siteManager';
 import { mobileLogger } from '@/utils/mobileLogger';
-import { POI, RouteResponse, TestSite, TEST_SITES, Coordinates, Site } from '@/types/navigation';
+import { POI, RouteResponse, TEST_SITES, Coordinates, Site } from '@/types/navigation';
 import { calculateDistance, formatDistance, calculateBearing } from '@/lib/mapUtils';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
@@ -303,7 +303,7 @@ export default function Navigation() {
             case 'parking':
               return poi.amenity === 'parking' || poi.amenity === 'parking_space' ||
                      poiName.includes('parking') || poiName.includes('parkplatz');
-            
+
             case 'gastronomie':
               const isGastronomie = poi.amenity === 'restaurant' ||
                                    poi.amenity === 'cafe' ||
@@ -322,40 +322,40 @@ export default function Navigation() {
                 console.log(`✅ GASTRONOMIE MATCH: ${normalizePoiString(poi.name)} (${poi.amenity})`);
               }
               return isGastronomie;
-            
+
             case 'accommodation':
               return poi.tourism === 'camp_pitch' || poi.tourism === 'apartment' ||
                      poi.tourism === 'guest_house' || poi.tourism === 'chalet' ||
                      poiName.includes('camping') || poiName.includes('ferienwohnung');
-            
+
             case 'services':
               return poi.tourism === 'information' || poi.amenity === 'post_box' ||
                      poi.amenity === 'atm' || poi.amenity === 'post_office' ||
                      poi.amenity === 'townhall' || poi.amenity === 'police' ||
                      poiName.includes('info') || poiName.includes('rathaus');
-            
+
             case 'kultur':
               return poi.amenity === 'place_of_worship' || poi.building === 'church' ||
                      poiName.includes('kirche') || poiName.includes('kapelle');
-            
+
             case 'sport':
               return poi.leisure === 'pitch' || poi.leisure === 'playground' ||
                      poi.leisure === 'stadium' || poi.leisure === 'swimming_pool' ||
                      poi.sport || poiName.includes('sportplatz') || poiName.includes('spielplatz');
-            
+
             case 'shopping':
               const isShop = poiCategory === 'shop' || !!poi.shop;
               if (isShop) {
                 console.log(`✅ SHOP MATCH: ${normalizePoiString(poi.name)} (category: ${poi.category}, shop: ${poi.shop})`);
               }
               return isShop;
-            
+
             case 'gesundheit':
               return poi.amenity === 'doctors' || poi.amenity === 'pharmacy' ||
                      poi.amenity === 'dentist' || poi.amenity === 'school' ||
                      poi.amenity === 'kindergarten' || poi.healthcare ||
                      poiName.includes('arzt') || poiName.includes('apotheke') || poiName.includes('schule');
-            
+
             default:
               return false;
           }
@@ -508,9 +508,9 @@ export default function Navigation() {
                  normalizePoiString(poi.name).toLowerCase().includes('parking');
         }
 
-        // Handle OSM category:value format (e.g., "amenity:parking")
-        if (selectedCategory.includes(':')) {
-          const [osmKey, osmValue] = selectedCategory.split(':');
+        // Handle OSM category:value format (e.g., "amenity:parking")  
+        if (selectedCategory?.includes(':')) {
+          const [osmKey, osmValue] = selectedCategory!.split(':');
           if (poi[osmKey] === osmValue) {
             console.log(`✅ DIRECT OSM MATCH: ${normalizePoiString(poi.name)} matches ${selectedCategory}`);
             return true;
@@ -567,6 +567,17 @@ export default function Navigation() {
           }
         }
 
+        // Default behavior: check if category matches any standard category
+        const categoryMatch = poiCategory.includes(buttonCategory) || 
+                             buttonCategory.includes(poiCategory) ||
+                             poi.category === buttonCategory;
+        
+        const nameMatch = poiName.includes(buttonCategory) ||
+                         buttonCategory.includes(poiName);
+        
+        const descriptionMatch = description.includes(buttonCategory) ||
+                               buttonCategory.includes(description);
+        
         return categoryMatch || nameMatch || descriptionMatch;
       });
 
@@ -827,7 +838,7 @@ export default function Navigation() {
     }
 
     const destination = { lat: poi.coordinates.lat, lng: poi.coordinates.lng };
-    
+
     // CRITICAL: Set destination for re-routing capability
     destinationRef.current = destination;
 
@@ -981,7 +992,7 @@ export default function Navigation() {
   // Listen for site changes and update local state
   useEffect(() => {
     const handleStorageChange = () => {
-      const newSite = localStorage.getItem('selected-site') as TestSite;
+      const newSite = localStorage.getItem('selected-site') as Site;
       if (newSite && newSite !== currentSite) {
         console.log('📍 NAVIGATION: Site change detected:', currentSite, '->', newSite);
         // Instead of setting currentSite directly, use the setSite function from SiteManager
@@ -1025,7 +1036,8 @@ export default function Navigation() {
 
     toast({
       title: t('alerts.siteChanged'),
-      description: `${t('alerts.siteSwitched')} ${normalizePoiString(TEST_SITES.find(s => s.id === site)?.name) || site}`,
+      description: `${t('alerts.siteSwitched')} ${normalizePoiString(TEST_SITES.find(s => s.name.toLowerCase() === site.toLowerCase())?.name) || site}`,
+
     });
   }, [toast, currentSite, t, setSite]);
 
@@ -1388,35 +1400,14 @@ export default function Navigation() {
     // because the ErrorBoundary will catch render errors.
 
     return (
-      <ErrorBoundary
-        onError={(error) => {
-          console.error('🚨 Navigation page error:', error);
-          // Clear navigation state on error
-          setIsNavigating(false);
-          setSelectedPOI(null);
-        }}
-        fallback={
-          <div className="h-screen flex items-center justify-center bg-gray-50">
-            <div className="text-center p-6">
-              <h2 className="text-2xl font-bold text-red-600 mb-4">Navigation System Error</h2>
-              <p className="text-gray-600 mb-4">The navigation system encountered an error and needs to restart.</p>
-              <button
-                onClick={() => window.location.reload()}
-                className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
-              >
-                Restart Navigation
-              </button>
-            </div>
-          </div>
-        }
-      >
+      <ErrorBoundary>
         <div className="navigation-page h-screen w-screen overflow-hidden bg-gray-50">
           {/* Mobile Memory Monitor - only show in development */}
           {isDev && (
             <MobileMemoryMonitor />
           )}
 
-          
+
 
           <div className="flex h-[calc(100vh-4rem)]">
             {/* Main Map Area */}
@@ -1452,7 +1443,7 @@ export default function Navigation() {
 
                   const poisWithDistance = poisToShow.map(poi => ({
                     ...poi,
-                    distance: formatDistance(calculateDistance(trackingPosition || currentPosition, poi.coordinates))
+                    distance: calculateDistance(trackingPosition || currentPosition, poi.coordinates)
                   }));
 
                   console.log(`🗺️ MAP CONTAINER DEBUG: Passing ${poisWithDistance.length} POIs to map (Navigation: ${isNavigating})`);
@@ -1467,8 +1458,8 @@ export default function Navigation() {
                 onPOIClick={handlePOIClick}
                 onPOIHover={undefined}
                 onMapClick={handleMapSingleTap}
-                onMapLongPress={typeof window !== 'undefined' && window.innerWidth > 768 ? handleDestinationLongPress : undefined}
-                onMapDoubleTap={typeof window !== 'undefined' && window.innerWidth > 768 ? handleDestinationLongPress : undefined}
+                onMapLongPress={typeof window !== 'undefined' && window.innerWidth > 768 ? handleDestinationLongPress : () => {}}
+                onMapDoubleTap={typeof window !== 'undefined' && window.innerWidth > 768 ? handleDestinationLongPress : () => {}}
                 mapStyle={mapStyle}
                 destinationMarker={destinationMarker}
                 showNetworkOverlay={showNetworkOverlay}
@@ -1511,7 +1502,7 @@ export default function Navigation() {
 
 
               {/* Camping Weather Widget */}
-              <CampingWeatherWidget coordinates={currentPosition} />
+              <CampingWeatherWidget />
             </>
           )}
 
